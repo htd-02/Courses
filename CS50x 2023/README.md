@@ -1,4 +1,4 @@
-From [here]([CS50x 2023](https://cs50.harvard.edu/x/2023/)), taking the course on [edX](https://home.edx.org/).
+From [here](https://cs50.harvard.edu/x/2023/), taking the course on [edX](https://home.edx.org/).
 
 # 1. 21/11/2023 - [Week 0 - Scratch](https://learning.edx.org/course/course-v1:HarvardX+CS50+X/block-v1:HarvardX+CS50+X+type@sequential+block@a8730f85a9a94d41a784a58c4b6d8bdc)
 
@@ -75,20 +75,20 @@ What happens between the ***input*** and ***output***, what we could call a ***b
 ### 1.1.5. Pseudocode
 
 - ***Pseudocode*** is a human readable version of code.
-- As an example of ***pseudocode*** we can look at the better of the three previous approaches to resolve the phonebook problem :
-1. *Pick up* phone book
-2. *Open to* the middle of phone book
-3. *Look at* page
+- As an example of ***pseudocode*** we can look at the better of the three previous approaches to resolve the phonebook problem :  
+1. *Pick up* phone book  
+2. *Open to* the middle of phone book  
+3. *Look at* page  
 4. **If** `person is on page`  
-	5. *Call* person
+5. <code>&nbsp;&nbsp;</code>*Call* person  
 6. **Else if** `person is earlier in book`  
-	7. *Open to* middle of left half of book  
-	8. ***Go back to line 3***
+7. <code>&nbsp;&nbsp;</code>*Open to* middle of left half of book  
+8. ***Go back to line 3***  
 9. **Else if** `person is later in book`  
-	10. *Open to* middle of right half of book  
-	11. ***Go back to line 3***
+10. <code>&nbsp;&nbsp;</code>*Open to* middle of right half of book  
+11. ***Go back to line 3***  
 12. **Else**  
-	13. *Quit*
+13. <code>&nbsp;&nbsp;</code>*Quit*  
 - Some of these lines begin with verbs in *Italic*, these are called *functions*.
 - Other include statements in **Bold**, these are called **conditionals**.
 - There are also `Highlighted` expressions that can be stated as true or false, these are called `boolean expressions`.
