@@ -1,6 +1,6 @@
 # Courses
 
-Projects, exercises and other things from courses I took or am taking.
+Notes, projects, exercises and other things from courses I took or am taking.
 
 ## [CS50x 2023](<CS50x 2023>)
 
