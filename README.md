@@ -1,6 +1,10 @@
 # Courses
 
-Projects, exercises and other things from courses I am taking.
+Projects, exercises and other things from courses I took or am taking.
+
+## [CS50x 2023](<CS50x 2023>)
+
+Currently doing this course.
 
 # Licenses
 
