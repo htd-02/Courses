@@ -202,7 +202,7 @@ Created the script running when the game starts
 
 #### 1.2.1.4. End of First day on Problem Set 0
 
-I now have functionning controls, allowing me to
+I now have functioning controls, allowing me to
 - Move between levels.
 - Interact with the environment(not yet tested since no interactible content yet).
 - Unstuck myself.
