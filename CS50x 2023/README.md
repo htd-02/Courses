@@ -2,8 +2,6 @@ From [here](https://cs50.harvard.edu/x/2023/), taking the course on [edX](https:
 
 # 1. 21/11/2023 - [Week 0 - Scratch](https://learning.edx.org/course/course-v1:HarvardX+CS50+X/block-v1:HarvardX+CS50+X+type@sequential+block@a8730f85a9a94d41a784a58c4b6d8bdc)
 
-## 1.1. Lecture 0
-
 Requires to use [Scratch](https://scratch.mit.edu/), available as an online editor or as a downloadable application.
 
 ---
@@ -13,6 +11,7 @@ Requires to use [Scratch](https://scratch.mit.edu/), available as an online edit
 2.  [Notes](https://cs50.harvard.edu/x/2023/notes/0/) & [Slides](https://cdn.cs50.net/2022/fall/lectures/0/lecture0.pdf)
 	- Read the 22/11/2023
 3. [Problem Set 0](https://cs50.harvard.edu/x/2023/psets/0/)
+    - Started the 23/11/2023
 
 ---
 
@@ -28,6 +27,8 @@ Requires to use [Scratch](https://scratch.mit.edu/), available as an online edit
         - [Sprite Movement Chapter](https://cs50.harvard.edu/x/2023/notes/0/#sprite-movement)
         - [More Sprites Chapter](https://cs50.harvard.edu/x/2023/notes/0/#more-sprites)
         - [Assets Used](https://cdn.cs50.net/2022/fall/lectures/0/src0.zip)
+
+## 1.1. Lecture 0
 
 ### 1.1.1. Computational Thinking
 
@@ -108,3 +109,101 @@ What happens between the ***input*** and ***output***, what we could call a ***b
 - Along with pseudocoding, ***abstraction*** is an essential skill and concept with computer programming.
 - ***Abstraction*** is the act of simplifying a problem into smaller and smaller problems.
 - For example, if hosting a huge dinner for friends, the problem of having to cook the entire meal could be quite overwhelming. Howerver, by breaking down the task of cooking the meal into smaller tasks(or problems), the big task of creating this huge meal might feel less challenging.
+
+## 1.2. Set Problem 0
+
+### 1.2.1. First day on the problem
+
+#### 1.2.1.1. Starting Sprites
+
+Started by creating two sprites  
+
+- [PH]Character  
+	- A small disk.  
+- [PH]LevelBorder  
+	- An empty rectangle with a corridor to one side.  
+
+And global *variables*
+
+- *Interract*  
+    - Can be 0 or 1.
+    - Indicates if the player is pressing the key to interact with their environment or not.  
+- *CurrentLevel*  
+    - Is the number of the current level, starts at 0.
+
+#### 1.2.1.2. [PH]Character
+
+Created 3 **functions**
+
+- **Controls**
+	1. If right arrow is pressed
+	2. &nbsp;&nbsp;&nbsp;&nbsp;Change x by 1
+	3. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+    4. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change x by -1
+	5. If left arrow is pressed
+	6. &nbsp;&nbsp;&nbsp;&nbsp;Change x by -1
+	7. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+    8. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change x by 1
+	9. If up arrow is pressed
+	10. &nbsp;&nbsp;&nbsp;&nbsp;Change y by 1
+	11. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+    12. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change y by -1
+	13. If down arrow is pressed
+	14. &nbsp;&nbsp;&nbsp;&nbsp;Change yx by 1
+	15. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+    16. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change y by -1
+    17. If space is pressed
+    18. &nbsp;&nbsp;&nbsp;&nbsp;Set Interact to 1  
+    19. Else
+    20. &nbsp;&nbsp;&nbsp;&nbsp;Set Interact to 0  
+    21. If w is pressed  
+    22. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: 0 y: 0  
+    23. If r is pressed
+    24. &nbsp;&nbsp;&nbsp;&nbsp;Ask if sure to want to reset the game
+    25. &nbsp;&nbsp;&nbsp;&nbsp;If answer is Yes or yes or y
+    26. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go to x: 0 y: 0  
+    27. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *CurrentLevel* to 0  
+    28. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *Interact* to 0  
+- **LevelCheck**  
+    1. If *CurrentLevel* is 0
+    2. &nbsp;&nbsp;&nbsp;&nbsp;If x position < -235
+    3. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *CurrentLevel* to 1
+    4. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Run **SwitchLevel** with 1 as argument
+    5. If *CurrentLevel* is 1
+    6. &nbsp;&nbsp;&nbsp;&nbsp;If position > 235
+    7. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *CurrentLevel* to 1
+    8. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Run **SwitchLevel** with 3 as argument
+- **SwitchLevel**
+    1. If argument is 1
+    2. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: 230 y: 0
+    3. If argument is 2
+    4. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: 0 y: -170
+    5. If argument is 3
+    6. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: -230 y: 0
+    7. If argument is 4
+    8. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: 0 y: -170
+
+And the script running when the game starts
+
+1. Set drag mode to not draggable
+2. Loop
+3. &nbsp;&nbsp;&nbsp;&nbsp;Run **Controls**
+4. &nbsp;&nbsp;&nbsp;&nbsp;Run **LevelCheck**
+5. &nbsp;&nbsp;&nbsp;&nbsp;Return to line 2
+
+#### 1.2.1.3. [PH]LevelBorder
+
+Created the script running when the game starts  
+
+1. Set drag mode to not draggable
+2. Loop
+3. &nbsp;&nbsp;&nbsp;&nbsp;Switch costume to *CurrentLevel*
+4. &nbsp;&nbsp;&nbsp;&nbsp;Return to line 2
+
+#### 1.2.1.4. End of First day on Problem Set 0
+
+I now have functionning controls, allowing me to
+- Move between levels.
+- Interact with the environment(not yet tested since no interactible content yet).
+- Unstuck myself.
+- Reset the game.
