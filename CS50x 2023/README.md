@@ -112,7 +112,7 @@ What happens between the ***input*** and ***output***, what we could call a ***b
 
 ## 1.2. Set Problem 0
 
-### 1.2.1. First day on the problem
+### 1.2.1. 23/11/2023 - First day on the problem
 
 #### 1.2.1.1. Starting Sprites
 
