@@ -134,7 +134,7 @@ And global *variables*
 
 #### 1.2.1.2. [PH]Character
 
-Created 3 **functions**
+Created 2 **functions**
 
 - **Controls**
 	1. If right arrow is pressed
@@ -165,31 +165,26 @@ Created 3 **functions**
     26. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go to x: 0 y: 0  
     27. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *CurrentLevel* to 0  
     28. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *Interact* to 0  
-- **LevelCheck**  
-    1. If *CurrentLevel* is 0
-    2. &nbsp;&nbsp;&nbsp;&nbsp;If x position < -235
-    3. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *CurrentLevel* to 1
-    4. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Run **SwitchLevel** with 1 as argument
-    5. If *CurrentLevel* is 1
-    6. &nbsp;&nbsp;&nbsp;&nbsp;If position > 235
-    7. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *CurrentLevel* to 1
-    8. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Run **SwitchLevel** with 3 as argument
-- **SwitchLevel**
-    1. If argument is 1
-    2. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: 230 y: 0
-    3. If argument is 2
-    4. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: 0 y: -170
-    5. If argument is 3
-    6. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: -230 y: 0
-    7. If argument is 4
-    8. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: 0 y: -170
+- **LevelNavigation**  
+    1. If x position < -239
+    2. &nbsp;&nbsp;&nbsp;&nbsp;Set x to 239
+    3. &nbsp;&nbsp;&nbsp;&nbsp;If *CurrentLevel* = 0
+    4. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *CurrentLevel* to 1
+    5. If x position > 239
+    6. &nbsp;&nbsp;&nbsp;&nbsp;Set x to -239
+    7. &nbsp;&nbsp;&nbsp;&nbsp;If *CurrentLevel* = 1
+    8. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *CurrentLevel* to 0
+    9. If y position < -179
+    10. &nbsp;&nbsp;&nbsp;&nbsp;Set y to 179
+    11. If y position > 179
+    12. &nbsp;&nbsp;&nbsp;&nbsp;Set y to -179
 
 And the script running when the game starts
 
 1. Set drag mode to not draggable
 2. Loop
 3. &nbsp;&nbsp;&nbsp;&nbsp;Run **Controls**
-4. &nbsp;&nbsp;&nbsp;&nbsp;Run **LevelCheck**
+4. &nbsp;&nbsp;&nbsp;&nbsp;Run **LevelNavigation**
 5. &nbsp;&nbsp;&nbsp;&nbsp;Return to line 2
 
 #### 1.2.1.3. [PH]LevelBorder
