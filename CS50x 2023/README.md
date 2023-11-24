@@ -12,6 +12,7 @@ Requires to use [Scratch](https://scratch.mit.edu/), available as an online edit
 	- Read the 22/11/2023
 3. [Problem Set 0](https://cs50.harvard.edu/x/2023/psets/0/)
     - Started the 23/11/2023
+    - [Current Progress](https://scratch.mit.edu/projects/929628306/)
 
 ---
 
