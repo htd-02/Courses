@@ -29,6 +29,12 @@ Requires to use [Scratch](https://scratch.mit.edu/), available as an online edit
         - [More Sprites Chapter](https://cs50.harvard.edu/x/2023/notes/0/#more-sprites)
         - [Assets Used](https://cdn.cs50.net/2022/fall/lectures/0/src0.zip)
 
+---
+
+- [Side Scratch projects made during this week](<Week 0/Side Projects/>)
+    - 24/11/2023 - [The Collapse of the Stars](https://scratch.mit.edu/projects/929660054/)
+        - A simple animation with text and music from [Tales of a Cosmic Song](https://github.com/Tales-of-a-Cosmic-Song/)
+
 ## 1.1. Lecture 0
 
 ### 1.1.1. Computational Thinking
