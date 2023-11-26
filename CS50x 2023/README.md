@@ -119,15 +119,15 @@ What happens between the ***input*** and ***output***, what we could call a ***b
 
 ## 1.2. Set Problem 0
 
-### 1.2.1. 23/11/2023 - First day on the problem
+### 1.2.1. 23/11/2023 - First Day on the Problem
 
 #### 1.2.1.1. Starting Sprites
 
 Started by creating two sprites  
 
-- [PH]Character  
+- ***[PH]Character***  
 	- A small disk.  
-- [PH]LevelBorder  
+- ***[PH]LevelBorder***  
 	- An empty rectangle with a corridor to one side.  
 
 And global *variables*
@@ -138,26 +138,26 @@ And global *variables*
 - *CurrentLevel*  
     - Is the number of the current level, starts at 0.
 
-#### 1.2.1.2. [PH]Character
+#### 1.2.1.2. ***[PH]Character***
 
 Created 2 **functions**
 
 - **Controls**
 	1. If right arrow is pressed
 	2. &nbsp;&nbsp;&nbsp;&nbsp;Change x by 1
-	3. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+	3. &nbsp;&nbsp;&nbsp;&nbsp;If touching ***[PH]LevelBorder***
     4. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change x by -1
 	5. If left arrow is pressed
 	6. &nbsp;&nbsp;&nbsp;&nbsp;Change x by -1
-	7. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+	7. &nbsp;&nbsp;&nbsp;&nbsp;If touching ***[PH]LevelBorder***
     8. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change x by 1
 	9. If up arrow is pressed
 	10. &nbsp;&nbsp;&nbsp;&nbsp;Change y by 1
-	11. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+	11. &nbsp;&nbsp;&nbsp;&nbsp;If touching ***[PH]LevelBorder***
     12. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change y by -1
 	13. If down arrow is pressed
 	14. &nbsp;&nbsp;&nbsp;&nbsp;Change yx by 1
-	15. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+	15. &nbsp;&nbsp;&nbsp;&nbsp;If touching ***[PH]LevelBorder***
     16. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change y by -1
     17. If space is pressed
     18. &nbsp;&nbsp;&nbsp;&nbsp;Set Interact to 1  
@@ -193,7 +193,7 @@ And the script running when the game starts
 4. &nbsp;&nbsp;&nbsp;&nbsp;Run **LevelNavigation**
 5. &nbsp;&nbsp;&nbsp;&nbsp;Return to line 2
 
-#### 1.2.1.3. [PH]LevelBorder
+#### 1.2.1.3. ***[PH]LevelBorder***
 
 Created the script running when the game starts  
 
@@ -202,10 +202,261 @@ Created the script running when the game starts
 3. &nbsp;&nbsp;&nbsp;&nbsp;Switch costume to *CurrentLevel*
 4. &nbsp;&nbsp;&nbsp;&nbsp;Return to line 2
 
-#### 1.2.1.4. End of First day on Problem Set 0
+#### 1.2.1.4. End of First Day on Problem Set 0
 
 I now have functioning controls, allowing me to
 - Move between levels.
 - Interact with the environment(not yet tested since no interactible content yet).
 - Unstuck myself.
 - Reset the game.
+
+### 1.2.2. 24 & 25/11/2023- Second and Third Day on the Problem
+
+Created an unrelated [scratch animation](https://scratch.mit.edu/projects/929660054/) before starting my daily course work.
+
+---
+
+Daily Recap  
+
+- Day 2
+    - The game now has a fully designed main character and map with functionning controls.
+    - Wrote the story and started making the assets for the items spread around the map.  
+
+#### 1.2.2.1. Editing Previous Code
+
+Renamed ***[PH]Character*** and ***[PH]LevelBorder*** to ***Character*** and ***LevelBorder***.  
+
+improved the game reset and the interaction commands by editing the **Controls** function, they will now use broadcasts to communicate with other sprites
+
+- **Controls**
+	1. If right arrow is pressed
+	2. &nbsp;&nbsp;&nbsp;&nbsp;Change x by 1
+	3. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+    4. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change x by -1
+	5. If left arrow is pressed
+	6. &nbsp;&nbsp;&nbsp;&nbsp;Change x by -1
+	7. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+    8. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change x by 1
+	9. If up arrow is pressed
+	10. &nbsp;&nbsp;&nbsp;&nbsp;Change y by 1
+	11. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+    12. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change y by -1
+	13. If down arrow is pressed
+	14. &nbsp;&nbsp;&nbsp;&nbsp;Change yx by 1
+	15. &nbsp;&nbsp;&nbsp;&nbsp;If touching [PH]LevelBorder
+    16. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Change y by -1
+    17. If space is pressed
+    18. &nbsp;&nbsp;&nbsp;&nbsp;Broadcast Interact
+    19. &nbsp;&nbsp;&nbsp;&nbsp;Wait until space is not pressed
+    20. If w is pressed  
+    21. &nbsp;&nbsp;&nbsp;&nbsp;Go to x: 0 y: 0  
+    22. If r is pressed
+    23. &nbsp;&nbsp;&nbsp;&nbsp;Broadcast QuestionReset1
+    24. &nbsp;&nbsp;&nbsp;&nbsp;Ask
+    25. &nbsp;&nbsp;&nbsp;&nbsp;If answer is Yes or yes or y
+    26. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Go to x: 0 y: 0  
+    27. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *CurrentLevel* to 0  
+    28. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Set *Interact* to 0  
+    29. &nbsp;&nbsp;&nbsp;&nbsp;Broadcast QuestionReset0
+
+Created a new sprite that will contain any text displayed on the screen, called ***TextBoxes*** and contains two costumes and a few small scripts for now
+
+- To display the text asking if the player wants to reset the game
+    1. When I receive QuestionReset1
+    2. &nbsp;&nbsp;&nbsp;&nbsp;Switch costume to ResetGame
+- To clear the screen from text
+    1. When I receive QuestionReset0
+    2. &nbsp;&nbsp;&nbsp;&nbsp;Switch costume to Empty
+
+And the script running when the game starts  
+1. Switch costume to Empty
+2. Go to front layer
+3. Set drag mode not draggable
+4. go to x: 0 y: 0
+
+#### 1.2.2.2. The World and the Main Character
+
+##### 1.2.2.2.1. The World
+
+Created a complete map of the world and cut it into 10 smaller sections of $480\times360$, since this is the size of the scratch stage, here is the repartition of all the sections
+
+| Map | 480 | 960 | 1440 | 1920 | 2400 |
+|:----:|:----:|:----:|:----:|:----:|:----:|
+| **360** | 7 | 8 | 9 |  |  |
+| **720** |  | 3 | 4 | 5 | 6 |
+| **1080** |  | 1 | 2 |  |  |
+| **1440** |  |  | 0 |  |  |
+
+Complete world map is $2400\times1440$.  
+
+Started working with this color palette but ended up applying a saturation effect of scale 0.535 on every layer.
+- Background
+    1. #733009
+- Border
+    1. #734209
+    2. #735009
+- Details
+    1. #731D09
+    2. #730B09
+
+Completed map :
+![Map](<Week 0/Problem Set 0/Pictures/Map.png>)
+
+##### 1.2.2.2.2. The Main Character
+
+Made a $500\times500$ image to create the main character in.  
+
+Using the same colors as the map.  
+
+1. #733009
+2. #734209
+3. #735009
+4. #731D09
+5. #730B09
+
+Completed character :
+![Character](<Week 0/Problem Set 0/Pictures/Character.png>)
+
+##### 1.2.2.2.4. Making it All Work Together
+
+The map has 3 layers
+
+1. The background, in ***backdrop***
+2. The borders, in ***MapBorder*** sprite
+3. The shadows, in ***Shadows*** sprite
+
+The main character has 2 layers
+
+1. ***Character*** sprite
+    - Rotates continuously
+2. ***Eye*** sprite
+    - Looks at the direction the player is going towards
+
+I made heavy use of broadcasts, every movement ***Character*** is doing is broadcasted so that ***Eye*** can stay synchronized with it.  
+
+#### 1.2.2.3. The Story
+
+***HEAVY SPOILERS AHEAD***
+
+The date is özolonuti, the 13th of oloshwomö numyol 2740 and the story happens in the ***Caverns of Flesh***, under the tundra slightly North of ***Pökrojitye***, the secondary ***yeki*** towering at the extreme South of ***Kisa***.  
+***Shökrodo*** died only a few ***boshwos*** ago and chaos is spreading through ***Kisa***, the main character, the ***kivü*** ***Thulagnu*** is part of a religious group called the ***Lost***, currently at war with both the ***Messengers of the Yeki*** and the ***Children of the Sky***.  
+
+The ***Lost*** believe that some entities created them and left them on ***Kisa***, beliefs shared by a lot of other ***kivü*** religious groups, the thing that only the ***Lost*** believe in is that these entities, the ***Engineers***, never cared for the ***kivü*** and even completely forgot about their existence.  
+The ***Lost*** hate the ***Engineers*** and anyone believing they care about ***Kisa*** and it's inhabitants.
+
+***Thulagnu*** was working with another kivü named ***Dizeho*** to find a way to shed their bodies and turn into ***yenwo***, the vital energy flowing through the world, so they could flee ***Begï*** and reach the stars to find their own purpose, without the ***Engineers***.  
+They were quite close to success when the ***Messengers of the Yeki*** sent the ***Caverns of Flesh*** upon them.  
+It devoured the tower they were working in, killing ***Dizeho*** and destroying most of their possessions.  
+The attack took ***Thulagnu*** by surprise and caused him to become a victim of his research, turning into an incomplete being of ***yenwo*** with most memories lost.
+
+What is left in the ***Caverns of Flesh*** will rot away and never see the day again.  
+
+
+
+##### 1.2.2.3.1. Introduction
+
+"You wake up in the Caverns of Flesh and you cannot remember who you are or what you are.  
+One thing is sure, what you are now is not what you used to be, you are a sentient mass of yenwo and you could swear you used to have a body.  
+
+You are at the entrance of the caverns, that you can tell by a disgusting thing next to you, the mouth of the abomination.  
+
+Who are you? What are you? Why are you here?  
+
+Maybe exploring the area could give some much needed answers."  
+
+##### 1.2.2.3.2. Progression
+
+The game progresses by finding items through the map, each item found increase the player's corruption, slowly altering the game visuals.
+
+###### 1.2.2.3.2.1. Items
+
+1. Rëgi of Thulagnu
+    - A blue crystal rod containing informations about Thulagnu
+    - "Oh, what a strange item, it seems in pretty bad shape but it does contain characters I can read..."
+    - "I was... a kivü? What are those? Oh I see, tall and standing on two legs, two very long arms with hands that could seize anything, a long bluish body with almost no muscles."
+    - "But also powers beyong the physical, mastery of yenwo, communication through thoughts..."
+    - "Wait, I am made of yenwo, I now only exist as a mass of this vital energy... Nothing is left of my body."
+    - "Looks like I was working with an other kivü, something about a groundbreaking achievement."
+2. Rëgi of Warning
+    - A blue crystal rod containing informations about the current war and the dangers of the Caverns of Flesh
+3. Corpse of Dizeho
+4. Corpse of Thulagnu
+5. Broken Research Material
+6. Pulsating Organ
+7. Mouth of Pain
+    - Entrance to the caverns, emits a disturbing screaming noise.
+
+- Corpse of Thulagnu  
+[Colors : #94C3EB - #94A7EB - #9D94EB - 94EBDB - #94DEEB]
+![Corpse of Thulagnu](<Week 0/Problem Set 0/Pictures/Corpse1.png>)
+
+- Corpse of Dizeho  
+[Colors : #94C3EB - #922DEB - #731D09]
+![Corpse of Dizeho](<Week 0/Problem Set 0/Pictures/Corpse2.png>)
+
+- Rëgi  
+[Colors : #2D43EB - #922DEB]
+![Rëgi](<Week 0/Problem Set 0/Pictures/Rëgi.png>)
+
+- Mouth of Pain  
+[Colors : #734209 - #733009 - #731D09]
+![Mouth of Pain](<Week 0/Problem Set 0/Pictures/MouthofPain.png>)
+
+- Pulsating Organ  
+[Colors : #734209 - #733009 - #731D09]
+![Pulsating Organ](<Week 0/Problem Set 0/Pictures/PulsatingOrgan.png>)
+
+- Broken Research Material  
+[Colors : #AFAFAF - #734209]
+![Broken Research Material](<Week 0/Problem Set 0/Pictures/ResearchMaterial.png>)
+
+###### 1.2.2.3.2.2. Corruption
+
+The corruption evolves over the course of the game, increasing a little bit after each item is discovered, making Thulagnu slowly vanish and making noise appear on the screen.
+
+It starts at 0 and finishes at 7, once the last item is found, the game fades to a last scene before ending.
+
+###### 1.2.2.3.3. Ending
+
+#### 1.2.2.4. The Programming
+
+##### 1.2.2.4.1. Lists
+
+I made two lists to track important data
+1. *Gamestate*
+    - Contains booleans to help tell scripts what to do  
+    1. If the character can use directional controls
+    2. If music can be played
+2. *ProgressTracker*
+    - Tracks if each of the 7 items was discovered
+    1. Rëgi of Thulagnu
+    2. Rëgi of Warning
+    3. Corpse of Dizeho
+    4. Corpse of Thulagnu
+    5. Broken Research Material
+    6. Pulsating Organ
+    7. Mouth of Pain
+
+##### 1.2.2.4.2. Music
+
+Each song is uploaded in mp3 and split in two to make sure not to go over the file limit to upload the project on [scratch.mit.edu](https://scratch.mit.edu/).
+The fuction picking the tracks chooses music fitting for each of the corruption levels.
+
+- The tracks  
+
+0. [II](https://github.com/Tales-of-a-Cosmic-Song/Music/blob/main/2018%20-%20Madness/flac/3%20-%20II.flac)
+1. [IV](https://github.com/Tales-of-a-Cosmic-Song/Music/blob/main/2018%20-%20Madness/flac/5%20-%20IV.flac)
+2. [VI](https://github.com/Tales-of-a-Cosmic-Song/Music/blob/main/2018%20-%20Madness/flac/7%20-%20VI.flac)
+3. [VIII](https://github.com/Tales-of-a-Cosmic-Song/Music/blob/main/2018%20-%20Madness/flac/9%20-%20VIII.flac)
+4. [VII](https://github.com/Tales-of-a-Cosmic-Song/Music/blob/main/2018%20-%20Madness/flac/8%20-%20VII.flac)
+5. [V](https://github.com/Tales-of-a-Cosmic-Song/Music/blob/main/2018%20-%20Madness/flac/6%20-%20V.flac)
+
+---
+
+Todo
+- Story
+    - Told through the discovery of items through the map
+- Corruption mechanic
+    - The more items found, the more alterations of the game window, until finding all the items and triggering the end of game event.
+- Add sound effects
+
