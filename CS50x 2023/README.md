@@ -581,3 +581,45 @@ There doesn't seem to be any major game breaking bug remaining.
 
 It's far from a finished game but the first week of CS50 is finishing and I need to be ready for the next one.  
 I will probably resume working on it once this course is over.
+
+# 2. 28/11/2023 - [Week 1 - C](https://cs50.harvard.edu/x/2023/weeks/1/)
+
+Requires to use Visual Studio Code, available as an online editor or as a downloadable application.
+
+---
+
+1. [Video](https://youtu.be/ywg7cW0Txs4)
+	- Watched the 28/11/2023
+2.  [Notes](https://cs50.harvard.edu/x/2023/notes/1/) & [Slides](https://cdn.cs50.net/2022/fall/lectures/1/lecture1.pdf)
+3. [Section](https://youtu.be/MEO1kAawOXQ)
+4. [Data Types](https://youtu.be/Fc9htmvVZ9U)
+5. [Operators](https://youtu.be/f1xZf4iJDWE)
+6. [Conditional Statements](https://youtu.be/1wsaV5nVC7g)
+7. [Loops](https://youtu.be/WgX8e_O7eG8)
+8. [Command Line](https://video.cs50.io/BnJ013X02b8)
+9. [Practice Problems 1](https://cs50.harvard.edu/x/2023/problems/1/)
+10. [Lab 1](https://cs50.harvard.edu/x/2023/labs/1/)
+11. [Problem Set 1](https://cs50.harvard.edu/x/2023/psets/1/)
+
+---
+
+## 2.1. Lecture 1
+
+[Easy to understand C manual](https://manual.cs50.io/)
+
+# 2.1.1. A Few Useful Linux Commands
+
+- ls
+    - lists files in current folder
+- cd
+    - move to specified folder
+- cp
+    - copy file
+- mkdir
+    - create directory
+- mv
+    - move or rename
+- rm
+    - remove file
+- rmdir
+    - remove directory
