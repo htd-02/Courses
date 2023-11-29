@@ -591,6 +591,7 @@ Requires to use Visual Studio Code, available as an online editor or as a downlo
 1. [Video](https://youtu.be/ywg7cW0Txs4)
 	- Watched the 28/11/2023
 2.  [Notes](https://cs50.harvard.edu/x/2023/notes/1/) & [Slides](https://cdn.cs50.net/2022/fall/lectures/1/lecture1.pdf)
+    - Read the 29/11/2023
 3. [Section](https://youtu.be/MEO1kAawOXQ)
 4. [Data Types](https://youtu.be/Fc9htmvVZ9U)
 5. [Operators](https://youtu.be/f1xZf4iJDWE)
@@ -603,23 +604,577 @@ Requires to use Visual Studio Code, available as an online editor or as a downlo
 
 ---
 
+- [C code snippets made during the lecture](./Week%201/Lecture%201/Code%20Snippets/)
+    - 29/11/2023
+        - [hello](./Week%201/Lecture%201/hello.c)
+        - [yourname](./Week%201/Lecture%201/yourname.c)
+        - [compare](./Week%201/Lecture%201/compare.c)
+        - [agree](./Week%201/Lecture%201/agree.c)
+        - [animals](./Week%201/Lecture%201/animals.c)
+        - [mario](./Week%201/Lecture%201/mario.c)
+        - [calculator](./Week%201/Lecture%201/calculator.c)
+
 ## 2.1. Lecture 1
+`
+### 2.1.1. From Source Code to Machine Code
 
-[Easy to understand C manual](https://manual.cs50.io/)
+In this lesson we will be writing source code, human readable code, in C and using a compiler to turn it into machine code that computers can understand.
 
-# 2.1.1. A Few Useful Linux Commands
+### 2.1.2. Three Axes of Evaluation
 
-- ls
-    - lists files in current folder
-- cd
-    - move to specified folder
-- cp
-    - copy file
-- mkdir
-    - create directory
-- mv
-    - move or rename
-- rm
-    - remove file
-- rmdir
-    - remove directory
+1. Correctess
+    - Does the code run as intended?
+2. Design
+    - How well is the code designed?
+3. Style
+    - How aesthetically pleasing and consistent is the code?
+
+### 2.1.3. A First Program
+
+- By typing `code hello.c` into the terminal window we create our first file, to make it a program we will write this code in it :
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    printf("hello, world\n");
+}
+```
+- Every single character above serves a purpose, typing it incorrectly will cause the program to not run.
+
+- To compile the program, we just need to type `make hello`
+in the terminal, `make` is a compiler that will look for our `hello.c` file and turn it into a program called `hello`.
+
+- To execute the program we need to type `./hello`.
+
+[hello](./Week%201/Lecture%201/hello.c)
+
+### 2.1.4. Functions
+
+- In scratch we utilized the `say` block to display text on the screen, but in C we have a function called `printf` that does the same.
+
+- Our code already invokes this function with the line
+```C
+printf("hello, world\n");
+```
+- Notice that the printf function is called, the argument passed to printf is "hello, world\n" and the statement of code is closed with a `;`.
+
+- A common omission in C programming is the omossion of a semicolon, if you modify your code like this :
+
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    printf("hello, world\n")
+}
+```
+
+- Running `make hello` again in the terminal will fail with an error caused by the omission of the semicolon.
+
+- Make sure to edit the code to place the semicolon back where it was.
+
+- Also notice the `\n` in the code, by removing it from the code, compiling it with `make hello` and typing `./hello`, the program changed by not going to a new line at the end of the execution.
+
+- Make sure to edit the code to place `\n` back where it was.
+
+- The statement at the start of the code `#include <stdio.h>` is a special command telling the compiler that we want to use the capabilities of the *library* called `stdio.h`. This allows you, among many other things, to utilize the `printf` function. Can read more about the capabilities of this library by reading the [Manual Pages](https://manual.cs50.io/).
+
+- CS50 also has it's own *library* called `cs50.h`, we will use it next in our program.
+
+### 2.1.5. Variables
+
+- In Scratch, we could ask the user "What's your name?" and say "hello" with that name appended to it.
+
+- In C, we can do the same. Some new code :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string answer = get_string("What's your nae? ");
+    printf("hello, %s\n", answer);
+}
+```
+
+- `#include <cs50.h>` has been added to the top of the code. The `get_string` function is used to get a string from the user. Then, the variable `answer` is passed to the `printf` function. `%s` tells the `printf` function to prepare itself to receive a string.
+
+- `answer` is a special holding place we call a *variable*. `answer` is of type `string` and can hold any string within it. There are many *data types*, such as `int`, `bool`, `char` and many others.
+
+- After compiling and running the program again, it now asks for a name and says hello with the name attached.
+
+[yourname](./Week%201/Lecture%201/yourname.c)
+
+### 2.1.6. Conditionals
+
+- Another building block used within Scratch waw that of *conditionals*. For example, might want to do of thing if x is greater than y, then might want to do something else if the condition isn't met.
+
+- We can create a new program to learn about these, type `code compare.c` and write :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int x = get_int("What's x? ");
+    int y = get_int("What's y? ");
+
+    if (x < y)
+    {
+        printf("x is less than y\n");
+    }
+}
+```
+
+- Notice that two variables are created, an `int`, or integer, called `x` and another called `y`. The values of tese are populated using the `get_int` function.
+
+- We can improve the program by coding as follow :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int x = get_int("What's x? ");
+    int y = get_int("What's y? ");
+
+    if (x < y)
+    {
+        printf("x is less than y\n");
+    }
+    else if (x > y)
+    {
+        printf("x s greater than y\n");
+    }
+    else
+    [
+        printf("x is equal to y\n");
+    ]
+}
+```
+
+- All potential outcomes are accounted for
+
+[compare](./Week%201/Lecture%201/compare.c)
+
+- Considering another data typ called a `char`, we can start a new program by typing `code agree.c` into the terminal. Write as follows :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Prompt user to agree
+    char c = get_char("Do you agree? ");
+
+    // Check wether agreed or not
+    if (c == 'Y' || c == 'y')
+    {
+        printf("Agreed.\n");
+    }
+    else if (c == 'N' || c == 'n')
+    {
+        printf("Not agreed.\n");
+    }
+}
+```
+
+- Notice that single quotes are used for single characters and that `==` ensures that something *is equal* to something else, where a single equal sign has a very different meaning in C. Last, notice tha `||` effectively means *or*.
+
+[agree](./Week%201/Lecture%201/agree.c)
+
+### 2.1.7. Loops
+
+- Can also the loop building block from Scratch in C.
+
+- Type `code meow.c` and write :
+
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    printf("meow\n");
+    printf("meow\n");
+    printf("meow\n");
+}
+```
+
+- It does as intended but could have quite better design.
+
+- We can improve that code by modifying as follows :
+
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    int i = 0;
+    while  (i < 3)
+    {
+        printf("meow\n");
+        i++;
+    }
+}
+```
+
+- We created an `int` called `i` and assigned it the value `0`. Then created a `while` loop that will run for as long as `i < 3`. The loop runs, every time `1` is added to `i` with the `i++` statement.
+
+- Similarly, can implement a count-down by modifying the code :
+
+```C
+#include <stdio.h>
+
+int mai(void)
+{
+    int i = 3;
+    while (i > 0)
+    {
+        printf("meow\n");
+        i--;
+    }
+}
+```
+
+- The counter `i` is now started at `3`. Each time the loop runs, it will reduce the counter by `1`. Once the counter is less than thero, the loop stops.
+
+- Can still improve the design by using a `for` loop. Modify the code :
+
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 0; i <3; i++)
+    {
+        printf("meow\n");
+    }
+}
+```
+
+- The `for` loop includes three arguments. The first is `int i = 0` and starts our counter at 0. The second is `i < 3` and is the condition being checked. The last is `i++`, telling the loop to increment by `1` each time it runs.
+
+- Can even loop forever using this code :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    while (true)
+    {
+        printf("meow\n");
+    }
+}
+```
+
+- Note that `true` wil always be true, therefore the code will always run. Can lose control of the terminal this way, to break from an infinite loop can type `Ctrl+C` on the keyboard.
+
+[animals](./Week%201/Lecture%201/animals.c)
+
+### 2.1.8. Linux & the Command Line
+
+- Linux is an operating system that is accessible via the command line in the codespace used for this course on VC Code.
+
+- Some common command line tools include :
+    - `ls`
+        - lists files in a directory
+    - `cd`
+        - changes current directory
+    - `cp`
+        - copies files and directories
+    - `mkdir`
+        - creates a directory
+    - `mv`
+        - moves/renames files and directories
+    - `rm`
+        - removes(deletes) files
+    - `rmdir`
+        - removes(deletes) directories
+
+- The most commonly used is `ls` which lists all the files in the current directory.
+
+- With `mv` you can move a file from one directory to another.
+
+- Can also create directories with `mkdir`.
+
+- And move to any directory using `cd`.
+
+### 2.1.9. Mario
+
+- How does one approach a computer science related problem?
+
+- To recreate on a new file a graphics from Mario, four question mark blocks side by site horizontally , we could do :
+
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    for (int = 0; i <4; i++)
+    {
+        printf("?");
+    }
+    printf("\n");
+}
+```
+
+- The question marks are printed using a loop.
+
+- Can apply the same logic to be able to create three vertical blocks :
+
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 0, i < 3; i++)
+    {
+        printf("#\n");
+    }
+}
+```
+
+- Now there are verical blocks printed with a loop.
+
+- How to combine these ideas to create a three by three group of blocks?
+
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+```
+
+- Now there is a loop inside of another. The first loop defines which vertical row is being printed, for each row three columns are printed, after each row a new line is printed.
+
+- To ensure that the number of rows is *constant*, unchangeable, can modify the code :
+
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    const int n = 3;
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+```
+
+- `n` is a *constant*, it can never be changed.
+
+- Can make the code prompt the user for the size of the grid :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int n = get_inst("Size: ");
+
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+```
+
+- `get_int` is used to promp the user.
+
+- A good programming piece of advice is to never trust the user. They will likely misbehave, typing incorrect values where they should not. Can protect the program from bad behavior by checking to make sure the user's input satisfies the needs of the program, can modify the code as follow :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+    do
+    {
+        n = get_int("Size: ");
+    }
+    while (n < 1);
+
+    for (int i = 0; i < n); i++)
+    {
+        for (int j = 0, j < n; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+```
+
+- Notice how the user is continuously prompted for the size until their input is 1 or greater.
+
+### 2.1.10. Comments
+
+- Comments are a fundamental part of a computer program, they leave explanatory remarks to the programmer and others that may be collaborating with the programmer regarding the code.
+
+- All code created for this coirse must include robust comments.
+
+- Typically, each comment is a few words or more, providing the reader an opportunity to understand what is happening in a specific block of code. Further, such comments serve as a reminder to the programmer when they, later, need to revise their code.
+
+- Comments involve placing `//` into the code, following by a comment. Can modify previous code by integrating commments :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Get size of grid
+    int n;
+    do
+    {
+        n = get_int("Size: ");
+    }
+    while (n < 1);
+
+    // Print grid of bricks
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+```
+
+### 2.1.11. Abstraction
+
+- Abstraction is the art of simplifying code such that it deals with smaller and smaller problems.
+
+- Looking at this code, can see two essential problems, *get size of grid* and *print grid of bricks*.
+
+- Can abstract away these problems into separate functions :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int get_size(void);
+void print_grid(int n);
+
+int main(void)
+{
+    int n = get_size();
+    print_grid(n);
+}
+
+int get_size(void)
+{
+    int n;
+    do
+    {
+        n = get_int("Size: ");
+    }
+    while (i < 1);
+    return n;
+}
+
+void print_grid(int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+}
+```
+
+- There are now three functions. First the `main` function that calls two other functions called `get_size` and `print_grid`. Second, a function called `get_size` which includes the exact code that was coded earlier to prompt the user for a size and make sure the value is one the program can work with. Third, a function called `print_grid` that prints the grid. Because the essential problems within the program were abstracted away, the `main` function is now very short.
+
+[mario](./Week%201/Lecture%201/mario.c)
+
+### 2.1.12. Operators & Types
+
+- *Operators* refer to the mathematical operations that are supported by the compiler? In C, these mathematical operators include :
+    - `+`
+        - for addition
+    - `-`
+        - for substraction
+    - `*`
+        - for multiplication
+    - `/`
+        - for division
+    - `%`
+        - for remainder
+
+- Types refer to the possible data that can be stored within a variable. For example, a `char` is designed to accomodate a single character like `a` or `2`.
+
+- Types are very important because each type has specific limits. For example, because of the limits in memory, the highest value for an `int` can be `4294967296`.
+
+- Types which will be interacted with during this course include :
+    - `bool`
+        - a Boolean expression of either true or false
+    - `char`
+        - a single character
+    - `float`
+        - a floating point value, or real number with a decimal value
+    - `double`
+        - a floating-point value with more digits than a float
+    - `int`
+        - an integer up to a certain size or number of bits
+    - `long`
+        - an integer with more bits so they can count higher than an int
+    - `string`
+        - a string of characters
+
+- Can implement a calculator in C with this code :
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Prompt user for x
+    int x = get_int("x: ");
+
+    // Prompt user for y
+    int y = get_int("y: ");
+
+    // Perform addition
+    printf("%i\n", x + y);
+}
+```
+
+- The `get_int` function is used to optain an integer from the user twice. One is stored in the `int` variable called `x` and the other in an `int` variable called `y`. Then the `printf` function prints the value of `x + y`, designated by the `%i` symbol.
+
+- Need to make sure to pay attention to the types of variables used to avoid problems within the code.
+
+[calculator](./Week%201/Lecture%201/calculator.c)
