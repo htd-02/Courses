@@ -12,7 +12,7 @@ Requires to use [Scratch](https://scratch.mit.edu/), available as an online edit
 	- Read the 22/11/2023
 3. [Problem Set 0](https://cs50.harvard.edu/x/2023/psets/0/)
     - Started the 23/11/2023
-    - [Current Progress](https://scratch.mit.edu/projects/929628306/)
+    - [Caverns of Flesh](https://scratch.mit.edu/projects/929628306/)
 
 ---
 
@@ -592,12 +592,18 @@ Requires to use Visual Studio Code, available as an online editor or as a downlo
 	- Watched the 28/11/2023
 2.  [Notes](https://cs50.harvard.edu/x/2023/notes/1/) & [Slides](https://cdn.cs50.net/2022/fall/lectures/1/lecture1.pdf)
     - Read the 29/11/2023
-3. [Section](https://youtu.be/MEO1kAawOXQ)
+3. [Supersection](https://youtu.be/MEO1kAawOXQ)
+    - Watched the 30/11/2023
 4. [Data Types](https://youtu.be/Fc9htmvVZ9U)
+    - Watched the 30/11/2023
 5. [Operators](https://youtu.be/f1xZf4iJDWE)
+    - Watched the 30/11/2023
 6. [Conditional Statements](https://youtu.be/1wsaV5nVC7g)
+    - Watched the 30/11/2023
 7. [Loops](https://youtu.be/WgX8e_O7eG8)
+    - Watched the 30/11/2023
 8. [Command Line](https://video.cs50.io/BnJ013X02b8)
+    - Watched the 30/11/2023
 9. [Practice Problems 1](https://cs50.harvard.edu/x/2023/problems/1/)
 10. [Lab 1](https://cs50.harvard.edu/x/2023/labs/1/)
 11. [Problem Set 1](https://cs50.harvard.edu/x/2023/psets/1/)
@@ -613,9 +619,14 @@ Requires to use Visual Studio Code, available as an online editor or as a downlo
         - [animals](./Week%201/Lecture%201/animals.c)
         - [mario](./Week%201/Lecture%201/mario.c)
         - [calculator](./Week%201/Lecture%201/calculator.c)
+- [C code snippets made during the supersection](./Week%201/Lecture%201/Code%20Snippets/)
+    - 30/11/2023
+        - [exercise1](./Week%201/Supersection%201/exercise1.c)
+        - [population](./Week%201/Supersection%201/population.c)
+        - [truncation](./Week%201/Supersection%201/truncation.c)
 
 ## 2.1. Lecture 1
-`
+
 ### 2.1.1. From Source Code to Machine Code
 
 In this lesson we will be writing source code, human readable code, in C and using a compiler to turn it into machine code that computers can understand.
