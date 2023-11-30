@@ -1178,3 +1178,123 @@ int main(void)
 - Need to make sure to pay attention to the types of variables used to avoid problems within the code.
 
 [calculator](./Week%201/Lecture%201/calculator.c)
+
+
+## 2.2. Supersection 1
+
+### 2.2.1. Manipulating Variables
+
+```C
+int x = 50;
+```
+"create an integer variable called x that gets the value 50."
+
+- Once a variable is initialized, there is no need to tell the data type again.
+
+```C
+int x = get_int("Value: ");
+```
+"run the function called get_int and store the return value in the integer variable called x."
+
+```C
+printf("Value is %i\n", x);
+```
+"print "Value is %i\n" where %i is an integer from the variable x and \n is a newline escape sequence."
+
+### 2.2.2. Types & Format Codes
+
+- Numbers
+    - `%i`
+        - `int`
+    - `%li`
+        - `long`
+    - `%f`
+        - `float` and `double`
+- Text
+    - `%c`
+        - `char`
+    - `%s`
+        - `string`
+
+### 2.2.3. Exercise
+
+- Create a C program that prompts the user for :
+    - A name
+    - An age
+    - A phone number
+- Then prints these values back as confirmation.
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string name = get_string("What is your name? ");
+    int age = get_int("How old are you? ");
+    string phone = get_string("What is your phone number? ");
+
+    printf("Your name is %s\nYou are %i years old\nYour phone number is %s\n", name, age, phone);
+}
+```
+
+[exercise1](./Week%201/Supersection%201/exercise1.c)
+
+### 2.2.4. Steps When Working on a Program
+
+1. Work an example
+2. Write down what was done during the example
+3. Create an algorithm after working multiple examples
+4. Test the algorithm by hand
+5. Translate algorithm to code
+6. Find errors in the code by running test cases
+7. Fix errors in the code
+
+### 2.2.5. Population of Llamas
+
+- There is a population of **n** llamas, each year **n/3** llamas are born and **n/4** pass away.
+- How many years will it take to reach a certain population of llamas?
+
+1. Prompt the user for a **starting number** of llamas.
+2. Prompt the user for a **goal number** of llamas.
+3. **Add and substract llamas every year** until we reach the goal number of llamas.
+4. **Print the number of years** it took to reach the goal number of llamas.
+
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Prompt user for starting number of llamas
+    int start;
+    do
+    {
+        start = get_int("How many starting llamas? ");
+    }
+    while (start < 9 );
+
+    // Prompt user for goal number of llamas
+    int end;
+    do
+    {
+        end = get_int("Which goal population? ");
+    }
+    while (end < start);
+
+    // Add and substract llamas every year until reaching the goal number of llamas
+    int years = 0;
+    int number = start;
+    while (number < end)
+    {
+        number += number / 12;
+        years++;
+    }
+
+    // Print the number of years it took to reach the goal number of llamas
+    printf("It took %i years to reach %i llamas with a starting number of %i.\n", years, end, start);
+}
+```
+
+[population](./Week%201/Supersection%201/population.c)
+
