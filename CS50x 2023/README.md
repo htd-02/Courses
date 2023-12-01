@@ -605,12 +605,15 @@ Requires to use Visual Studio Code, available as an online editor or as a downlo
 8. [Command Line](https://video.cs50.io/BnJ013X02b8)
     - Watched the 30/11/2023
 9. [Practice Problems 1](https://cs50.harvard.edu/x/2023/problems/1/)
+    - Done the 01/12/2023
 10. [Lab 1](https://cs50.harvard.edu/x/2023/labs/1/)
+    - Done the 01/12/2023
 11. [Problem Set 1](https://cs50.harvard.edu/x/2023/psets/1/)
+    - Started the 01/12/2023
 
 ---
 
-- [C code snippets made during the lecture](./Week%201/Lecture%201/Code%20Snippets/)
+- [C code snippets made during the lecture](./Week%201/Lecture%201/)
     - 29/11/2023
         - [hello](./Week%201/Lecture%201/hello.c)
         - [yourname](./Week%201/Lecture%201/yourname.c)
@@ -619,11 +622,23 @@ Requires to use Visual Studio Code, available as an online editor or as a downlo
         - [animals](./Week%201/Lecture%201/animals.c)
         - [mario](./Week%201/Lecture%201/mario.c)
         - [calculator](./Week%201/Lecture%201/calculator.c)
-- [C code snippets made during the supersection](./Week%201/Lecture%201/Code%20Snippets/)
+- [C code snippets made during the supersection](./Week%201/Supersection%201/)
     - 30/11/2023
         - [exercise1](./Week%201/Supersection%201/exercise1.c)
         - [population](./Week%201/Supersection%201/population.c)
         - [truncation](./Week%201/Supersection%201/truncation.c)
+- [C code snippet made during the lab](./Week%201/Lab%201/)
+    - 01/12/2023
+        - [population](./Week%201/Lab%201/population/population.c)
+- [C code snippets made during the practice problems](./Week%201/Practice%20Problems%201/)
+    - 01/12/2023
+        - [debug](./Week%201/Practice%20Problems%201/debug/debug.c)
+        - [half](./Week%201/Practice%20Problems%201/half/half.c)
+        - [prime](./Week%201/Practice%20Problems%201/prime/prime.c)
+- [C code snippet made during the problem set](./Week%201/Problem%20Set%201/)
+    - 01/12/2023
+        - [hello](./Week%201/Problem%20Set%201/hello/hello.c)
+        - [mario](./Week%201/Problem%20Set%201/mario-more/mario.c)
 
 ## 2.1. Lecture 1
 
@@ -1309,3 +1324,283 @@ int main(void)
 
 [population](./Week%201/Supersection%201/population.c)
 
+## 2.3. Lab 1
+
+- The exercise was the same as the Llama population one from the day before so I used almost the same code :
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // TODO: Prompt for start size
+    int start;
+    do
+    {
+        start = get_int("Starting population: ");
+    }
+    while (start < 9);
+
+    // TODO: Prompt for end size
+    int end;
+    do
+    {
+        end = get_int("Goal population: ");
+    }
+    while (end < start);
+
+    // TODO: Calculate number of years until we reach threshold
+    int years = 0;
+    while (start < end)
+    {
+        start += start / 3 - start / 4;
+        years++;
+    }
+
+    // TODO: Print number of years
+    printf("Years: %i", years);
+}
+
+```
+
+[population](./Week%201/Lab%201/population/population.c)
+
+## 2.4. Practice Problems 1
+
+### 2.4.1. Debug
+
+- Two kinds of errors, **syntactical errors** and **logical errors**.
+
+- Syntax is important for the computer to understand what it is told to do. Ech programming language has it's own syntactical rules.
+
+Debug the following code :
+```C
+// Become familiar wih C syntax
+// Learn to debug buggy code
+
+#include <cs50.h>
+
+int main(void)
+{
+    // Ask for your name and where live
+    name = get_string("What is your name? ")
+    location = get_string("Where do you live? ")
+
+    // Say hello
+    print("Hello, %i, from %i!", name, location)
+}
+```
+
+Debugged code :
+```C
+// Become familiar wih C syntax
+// Learn to debug buggy code
+
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Ask for your name and where live
+    string name, location;
+    name = get_string("What is your name? ");
+    location = get_string("Where do you live? ");
+
+    // Say hello
+    printf("Hello, %s, from %s!", name, location);
+}
+```
+
+[debug](./Week%201/Practice%20Problems%201/debug/debug.c)
+
+### 2.4.2. Half
+
+- Complete a function to calculate the amount each of two people has to pay based on the bill amount, the tax and the tip.
+
+- With $x$ being the bill amount, $y$ the tax and $z$ the tip :
+    - ***owed*** $=x+xy/100+(100x+xy)z/10000$
+
+Code resolving the problem :
+```C
+// Calculate your half of a restaurant bill
+// Data types, operations, type casting, return value
+
+#include <cs50.h>
+#include <stdio.h>
+
+float half(float bill, float tax, int tip);
+
+int main(void)
+{
+    float bill_amount = get_float("Bill before tax and tip: ");
+    float tax_percent = get_float("Sale Tax Percent: ");
+    int tip_percent = get_int("Tip percent: ");
+
+    printf("You will owe $%.2f each!\n", half(bill_amount, tax_percent, tip_percent));
+}
+
+// TODO: Complete the function
+float half(float bill, float tax, int tip)
+{
+    float owed = (bill + bill * tax / 100 + (100 * bill + bill * tax) * tip / 10000) / 2;
+    return owed;
+}
+```
+
+[half](./Week%201/Practice%20Problems%201/half/half.c)
+
+### 2.4.3. Prime
+
+- A prime number is defined as a whole number greater than 1 whose only factors are 1 and itself.
+
+- Write an algorithm to generate all prime numbers in a range specified by the user.
+
+Code solving the problem :
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+bool prime(int number);
+
+int main(void)
+{
+    int min;
+    do
+    {
+        min = get_int("Minimum: ");
+    }
+    while (min < 1);
+
+    int max;
+    do
+    {
+        max = get_int("Maximum: ");
+    }
+    while (min >= max);
+
+    for (int i = min; i <= max; i++)
+    {
+        if (prime(i))
+        {
+            printf("%i\n", i);
+        }
+    }
+}
+
+bool prime(int number)
+{
+    bool check = true;
+    if (number != 1)
+    {
+        int counter = 2;
+        while (counter < number && check == true)
+        {
+            if (number % counter != 0)
+            {
+                check = true;
+                counter++;
+            }
+            else
+            {
+                check = false;
+            }
+        }
+    }
+    else
+    {
+        check = false;
+    }
+    return check;
+}
+```
+
+[prime](./Week%201/Practice%20Problems%201/prime/prime.c)
+
+## 2.5. Problem Set 1
+
+### 2.5.1. Hello
+
+- Make a program prompting the user for their name then displaying "hello, `name`".
+
+My program :
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string name = get_string("What is your name? ");
+    printf("hello, %s\n", name);
+}
+```
+
+[hello](./Week%201/Problem%20Set%201/hello/hello.c)
+
+### 2.5.2. Mario
+
+- Make a program that asks the user for a size between 1 and eight then builds a Mario pyramid of that size.
+
+1. Ask for size
+2. Print line :
+3. &nbsp;&nbsp;&nbsp;&nbsp;Print (size - line) number of spaces
+4. &nbsp;&nbsp;&nbsp;&nbsp;Print line number of `#`
+5. &nbsp;&nbsp;&nbsp;&nbsp;Print 2 spaces
+6. &nbsp;&nbsp;&nbsp;&nbsp;Print line number of `#`
+7. Increment line counter
+8. While line <= size, repeat from line 2
+
+My code :
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Prompt the user for a value between 1 and 8
+    int size;
+    do
+    {
+        size = get_int("Between 1 and 8, what should be the size of the pyramid? ");
+    }
+    while (size < 1 || size > 8);
+
+    // Generate the pyramid
+    int line = 1;
+    while (line <= size)
+    {
+        // Print first row of spaces
+        int spaces = size - line;
+        int counter = 0;
+        while (counter < spaces)
+        {
+            printf(" ");
+            counter++;
+        }
+
+        // Print first row of bricks
+        counter = 0;
+        while (counter < line)
+        {
+            printf("#");
+            counter++;
+        }
+
+        // Print second row of spaces
+        printf("  ");
+
+        // Print second row of bricks
+        counter = 0;
+        while (counter < line)
+        {
+            printf("#");
+            counter++;
+        }
+
+        // End of line
+        printf("\n");
+        line++;
+    }
+}
+```
+
+[mario](./Week%201/Problem%20Set%201/mario-more/mario.c)
