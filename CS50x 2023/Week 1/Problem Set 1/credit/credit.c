@@ -45,38 +45,33 @@ int main(void)
     // Check Luhn's algorithm
     if (strcmp("INVALID", brand) != 0)
     {
-        // Decompose the number into multiple individual integers stored in an array
-        int decomposed[16];
-        int counter = 0;
+        // Decompose the number into individual integers
+        int counter = 1;
+        int algoTest = 0;
         while (number)
         {
-            decomposed[counter] = number % 10;
-            number /= 10;
-            counter++;
-        }
+            int testValue = number % 10;
 
-        // Grab each of the digits one by one
-        int algoTest = 0;
-        for (int i = 0; i < counter; i++)
-        {
-            // If the digit is pair
-            if ((i + 1) % 2 == 0)
+            // Check each individual numbers
+            if (counter % 2 == 0)
             {
                 // If (digit * 2) is higher than 9
-                if (decomposed[i] * 2 > 9)
+                if (testValue * 2 > 9)
                 {
-                    algoTest += (decomposed[i] * 2) % 10;
-                    algoTest += (decomposed[i] * 2 / 10) % 10;
+                    algoTest += (testValue * 2) % 10;
+                    algoTest += (testValue * 2 / 10) % 10;
                 }
                 else
                 {
-                    algoTest += decomposed[i] * 2;
+                    algoTest += testValue * 2;
                 }
             }
             else
             {
-                algoTest += decomposed[i];
+                algoTest += testValue;
             }
+            number /= 10;
+            counter++;
         }
 
         // test algoTest
@@ -86,6 +81,6 @@ int main(void)
         }
     }
 
-    // Print brand
+    // Print brand or INVALID
     printf("%s\n", brand);
 }
