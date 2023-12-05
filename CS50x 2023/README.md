@@ -1798,3 +1798,21 @@ int main(void)
 ```
 
 [credit](./Week%201/Problem%20Set%201/credit/credit.c)
+
+# 3. 05/12/2023 - [Week 2 - Arrays](https://cs50.harvard.edu/x/2023/weeks/2/)
+
+1. [Video](https://youtu.be/XmYnsO7iSI8)
+	- Watched the 05/12/2023
+2. [Notes](https://cs50.harvard.edu/x/2023/notes/2/) & [Slides](https://cdn.cs50.net/2022/fall/sections/2/section2.pdf)
+3. [Supersection](https://youtu.be/FxPHywzblfo)
+4. [Functions](https://youtu.be/n1glFqt3g38)
+5. [Variables & Scope](https://youtu.be/GiFbdVGjF9I)
+6. [Debugging ("Step Through")](https://youtu.be/---HbbANxDQ)
+7. [Debugging ("Step Into")](https://youtu.be/tk3cl8hyfqM)
+8. [Arrays](https://youtu.be/K1yC1xshF40)
+9. [Command Line Arguments](https://youtu.be/AI6Ccfno6Pk)
+10. [Practice Problems 2](https://cs50.harvard.edu/x/2023/problems/2/)
+11. [Lab 2](https://cs50.harvard.edu/x/2023/labs/2/)
+3. [Problem Set 2](https://cs50.harvard.edu/x/2023/psets/2/)
+
+## 3.1. Lecture 2
