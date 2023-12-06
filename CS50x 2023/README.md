@@ -1804,6 +1804,7 @@ int main(void)
 1. [Video](https://youtu.be/XmYnsO7iSI8)
 	- Watched the 05/12/2023
 2. [Notes](https://cs50.harvard.edu/x/2023/notes/2/) & [Slides](https://cdn.cs50.net/2022/fall/sections/2/section2.pdf)
+    - Read the 06/12/2023
 3. [Supersection](https://youtu.be/FxPHywzblfo)
 4. [Functions](https://youtu.be/n1glFqt3g38)
 5. [Variables & Scope](https://youtu.be/GiFbdVGjF9I)
@@ -1815,4 +1816,437 @@ int main(void)
 11. [Lab 2](https://cs50.harvard.edu/x/2023/labs/2/)
 3. [Problem Set 2](https://cs50.harvard.edu/x/2023/psets/2/)
 
+---
+
+- [C code snippets made during the lecture](./Week%202/Lecture%202/)
+    - 06/12/2023
+        - [scores](./Week%202/Lecture%202/scores.c)
+        - [hi](./Week%202/Lecture%202/hi.c)
+        - [length](./Week%202/Lecture%202/length.c)
+        - [uppercase](./Week%202/Lecture%202/uppercase.c)
+        - [greet](./Week%202/Lecture%202/greet.c)
+        - [status](./Week%202/Lecture%202/status.c)
+
 ## 3.1. Lecture 2
+
+### 3.1.1. Compiling
+
+- A compiler will convert *source code* to *machine code*.
+
+- In CS50's codespace, the compiler used is called `clang` or *c language*. The codespace has been pre-programmed such as `make` will run clang along with numerous command line arguments to make the whole process convenient.
+
+- Compiling involves four major steps :
+    1. First ***preprocessing*** where the header files in our code, designated with a `#`, are copied and pasted into the file.
+    2. Second ***compiling*** where the source code is converted into assembly code.
+    3. Third ***assembling*** where the compiler converts the assembly code into machine code.
+    4. Fourth ***linking*** where code from the included libraries is also converted to machine code and combined with the code of the program.
+
+### 3.1.2. Debugging
+
+- Everyone makes mistakes while coding and there are ways to make finding these mistakes easier.
+
+- `printf` can be used to debug when used to dislay informations at important steps of the code.
+
+- In VS Code, there is a preconfigured debugger.
+    - To use it there first needs to be a *breakpoint* added to a line of the code by left clicking on the margin, a red dot will appear.
+    - Then the command `debug50 <nameoftheprogram>` has to be used, it will run the code and pause at the breakpoint, highlighting the line. It will also show the value of any used variable and give access to various options to continue.
+    - The *step over* button will keep moving through the code step by step, but without detailing the steps taken inside called functions, to view the detailed process through called functions *step into* has to be used instead.
+    - This tool will not directly show where the bug is but will help slow down to analyze the code running step by step.
+
+- A final form of debugging is called *rubber duck debugging*. When having challenges with the code, can consider how speaking out loud to, quite literally, a rubber duck, could help find out where the issue is. No need to actually talk to a rubber duck, can speak to any human nearby too. They do not need to understand how to program, speaking with them is an opportunity to speak about the code and step through it's logic for yourself.
+
+### 3.1.3. Arrays
+
+- Each data type requires a certain amount of system resources :
+    - `bool`
+        - 1 byte
+    - `int`
+        - 4 bytes
+    - `long`
+        - 8 bytes
+    - `float`
+        - 4 bytes
+    - `double`
+        - 8 bytes
+    - `char`
+        - 1 byte
+    - `string`
+        - ? bytes
+
+- Inside any computer, there us a finite amount of memory available.
+
+- We can create a program to explore the concepts of memory :
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    // Scores
+    int score1 = 72;
+    int score2 = 73;
+    int score3 = 74;
+
+    // Print the average
+    printf("Average: %f\n", (score1 + score2 + score3) / 3.0);
+}
+```
+
+- Do notice the number on the right is a floating point value of `3.0`, such that the calculation is rendered as a float in the end.
+
+- Each of the variables in the code are stored in memory with 4 bytes each.
+
+- Arrays are ways of storing data back-to-back in memory such that this data is easily accessed.
+
+- Can change the code to use an array `int scores[]` instead of three different variables, it could store the three variables as three 4 bytes values back-to-back in memory :
+```C
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    // Scores
+    int scores[3];
+    scores[0] = 72;
+    scores[1] = 73;
+    scores[2] = 33;
+
+    // Print the average
+    printf("Average: %f\n", (scores[0] + scores[1] + scores[2]) / 3.0);
+}
+```
+
+- `score[0]` examines the value at it's location in memory by `indexing into` the array called `scores` at location `0`.
+
+- The code can be improved even further to also accept prompted scores :
+```C
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    // Scores
+    int scores[3];
+    for (int i = 0; i < 3; i++)
+    {
+        scores[i] = get_int("Score: ");
+    }
+
+    // Print the average
+    printf("Average: %f\n", (scores[0] + scores[1] + scores[2]) / 3.0);
+}
+```
+
+- It now indexes into `scores` by using `scores[i]` where `i` is supplied by the `for` loop.
+
+- Can *abstract away* the calculation of the average :
+```C
+#include <stdio.h>
+#include <cs50.h>
+
+// Constant
+const int N = 3;
+
+// Prototype
+float average(int length, int array[]);
+
+int main(void)
+{
+    // Get scores
+    int scores[3];
+    for (int i = 0; i < 3; i++)
+    {
+        scores[i] = get_int("Score: ");
+    }
+
+    // Print average
+    printf("Average: %f\n", average(N, scores));
+}
+
+float average(int length, int array[])
+{
+    // Calculate average
+    int sum = 0;
+    for (int i = 0; i < length; i++)
+    {
+        sum += array[i];
+    }
+    return sum / (float) length;
+}
+```
+
+- A new function called `average` is declared, a `const`(or constant) value of `N` is declared. The `average` function takes `int array[]`, which means the compiler passes an array to this function.
+
+- Arrays can be containers and they can also be passed between functions.
+
+[scores](./Week%202/Lecture%202/scores.c)
+
+### 3.1.4. Strings
+
+- A `string` is an array of variables of type `char`, an array of characters. It begins with the first character and ends with a special character called a `NUL character`, or `\0`.
+
+- Can create the following code :
+```C
+#include <stdio.h>
+
+int main(void)
+{
+    char c1 = 'H';
+    char c2 = 'I';
+    char c3 = '!';
+
+    printf("%i %i %i\n", c1, c2, c3);
+}
+```
+
+- This will output the decimal value of each character.
+
+- To further understand how a `string` works, can revise the code as follow :
+```C
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    string s = "HI!";
+
+    printf("%i %i %i\n", s[0], s[1], s[2]);
+}
+```
+
+- The `printf` statement presents threee values from the array called `s`.
+
+- The code is then modified to say both `HI!` and `BYE!` :
+```C
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    string s = "HI!";
+    string t = "BYE!";
+
+    printf("%s\n", s);
+    printf("%s\n", t);
+}
+```
+
+- Two strings are used in tis example.
+
+- It can be further iproved :
+```C
+#include <stdio.h>
+#include <cs50.h>
+
+int main(void)
+{
+    string words[2];
+    words[0] = "HI!";
+    words[1] = "BYE!";
+
+    printf("%s\n", words[0]);
+    printf("%s\n", words[1]);
+}
+```
+
+- Both strings are now stored within a single array of type `string`.
+
+[hi](./Week%202/Lecture%202/length.c)
+
+- A common programming problem, perhaps more specifically in C, is to discover the length of an array.
+
+- Can use this code to discover the length of a `string` :
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Prompt for name
+    string name = get_string("Name: ");
+
+    // Count characters until '\0', or NUL
+    int n = 0;
+    while (name[n] != '\0')
+    {
+        n++;
+    }
+    printf("%i\n", n);
+}
+```
+
+- This code will loop until `NUL` is found.
+
+- This is such a common problem that other programmers have created code in the `string.h` library to find the length of a string. Can change the code to :
+```C
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    // Prompt for name
+    string name = get_string("Name: ");
+
+    // Count characters
+    int length = strlen(name);
+
+    printf("%i\n", length);
+}
+```
+
+- The code now uses the `string.h` library decared at the top of the file, it uses from that library the function `strlen` which calculates the length of the string passed to it.
+
+[length](./Week%202/Lecture%202/length.c)
+
+- Can code this to convert all lowercase characters to uppercase ones :
+```C
+#include <cs50.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After: ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (s[i] >= 'a' && s[i] <= 'z')
+        {
+            printf("%c", s[i] - 32);
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+```
+
+- This code *iterates* through each value in the string, the program looks at each character. If the character is lowercase it substracts the value 32 from it to convert it to uppercase.
+
+- The `ctype.h` library is quite useful in this situation, it can do the same as the previously coded program but without as much trouble :
+```C
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After: ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+        if (islower(s[i]))
+        {
+            printf("%c", toupper(s[i]));
+        }
+        else
+        {
+            printf("%c", s[i]);
+        }
+    }
+    printf("\n");
+}
+```
+
+- The program now uses `islower` to determine if each character is lowercase, then the `toupper` function to convert any lowercase character to uppercase.
+
+- This program does what is desired but there us an opportunity for improvement. `toupper` is smart enough to know that if it is passed any uppercase character it will just ignore it, so the code no longer needs the `if` statement :
+```C
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+#include <string.h>
+
+int main(void)
+{
+    string s = get_string("Before: ");
+    printf("After: ");
+    for (int i = 0, n = strlen(s); i < n; i++)
+    {
+            printf("%c", toupper(s[i]));
+    }
+    printf("\n");
+}
+```
+
+[uppercase](./Week%202/Lecture%202/uppercase.c)
+
+### 3.1.5. Command-Line Arguments
+
+- `Command-line arguments` are arguments that are passed to the program at the command line.
+
+- Make a new program :
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    string name = get_string("What's your name? ");
+    printf("hello, %s\n", name);
+}
+```
+
+- It would be nice for this program to take arguments before the program even runs, this way :
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[])
+{
+    if (argc == 2)
+    {
+        printf("hello, %s\n", argv[1]);
+    }
+    else
+    {
+        printf("hello, world\n");
+    }
+}
+```
+
+- The program now knows `argc`, the number of command line arguments, and `argv` which is an array of the characters passed as arguments at the command line.
+
+- Using the syntax of this program, executing `./greet David` would result in the program saying `hello, David`.
+
+[greet](./Week%202/Lecture%202/greet.c)
+
+### 3.1.6. Exit Status
+
+- When a program ends, it provides a special exit code to the computer.
+
+- When it exits without error, a statis code of `0` is provided and often when an error occurs that results in the program ending, a status of `1` is provided.
+
+- Can write a program that illustrates this :
+```C
+#include <cs50.h>
+#include <stdio.h>
+
+int main(int argc, string argv[])
+{
+    if (argc !=2)
+    {
+        printf("Missing command-line argument\n");
+        return 1;
+    }
+    printf("hello, %s\n", argv[1]);
+    return 0;
+}
+```
+
+- With his code, if no argument is provided, an exit status of `1` will be given, but if an argument is provided, an exit status of `0` will be given.
+
+- Very useful to check if the user provided enough command-line arguments.
+
+[status](./Week%202/Lecture%202/status.c)
+
+### 3.1.7. Cryptography
+
+- It is the art of ciphering and deciphering a message.
+
+- `plaintext` and a `key` are provided to a `cipher` which will result in a ciphered text.
+
+- The key is a special argument passed to the cipher along with the plaintext, the cipher uses the key to make decisions about how to implement it's cipher algorithm.
