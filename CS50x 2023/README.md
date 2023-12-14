@@ -594,15 +594,15 @@ Requires to use Visual Studio Code, available as an online editor or as a downlo
     - Read the 29/11/2023
 3. [Supersection](https://youtu.be/MEO1kAawOXQ)
     - Watched the 30/11/2023
-4. [Data Types](https://youtu.be/Fc9htmvVZ9U)
+4. Shorts - [Data Types](https://youtu.be/Fc9htmvVZ9U)
     - Watched the 30/11/2023
-5. [Operators](https://youtu.be/f1xZf4iJDWE)
+5. Shorts - [Operators](https://youtu.be/f1xZf4iJDWE)
     - Watched the 30/11/2023
-6. [Conditional Statements](https://youtu.be/1wsaV5nVC7g)
+6. Shorts - [Conditional Statements](https://youtu.be/1wsaV5nVC7g)
     - Watched the 30/11/2023
-7. [Loops](https://youtu.be/WgX8e_O7eG8)
+7. Shorts - [Loops](https://youtu.be/WgX8e_O7eG8)
     - Watched the 30/11/2023
-8. [Command Line](https://video.cs50.io/BnJ013X02b8)
+8. Shorts - [Command Line](https://video.cs50.io/BnJ013X02b8)
     - Watched the 30/11/2023
 9. [Practice Problems 1](https://cs50.harvard.edu/x/2023/problems/1/)
     - Done the 01/12/2023
@@ -1805,13 +1805,15 @@ int main(void)
 	- Watched the 05/12/2023
 2. [Notes](https://cs50.harvard.edu/x/2023/notes/2/) & [Slides](https://cdn.cs50.net/2022/fall/sections/2/section2.pdf)
     - Read the 06/12/2023
-3. [Supersection](https://youtu.be/FxPHywzblfo)
-4. [Functions](https://youtu.be/n1glFqt3g38)
-5. [Variables & Scope](https://youtu.be/GiFbdVGjF9I)
-6. [Debugging ("Step Through")](https://youtu.be/---HbbANxDQ)
-7. [Debugging ("Step Into")](https://youtu.be/tk3cl8hyfqM)
-8. [Arrays](https://youtu.be/K1yC1xshF40)
-9. [Command Line Arguments](https://youtu.be/AI6Ccfno6Pk)
+3. [Section](https://youtu.be/FxPHywzblfo)
+    - Watched the 14/12/2023
+4. Shorts - [Functions](https://youtu.be/n1glFqt3g38)
+    - Watched the 14/12/2023
+5. Shorts - [Variables & Scope](https://youtu.be/GiFbdVGjF9I)
+6. Shorts - [Debugging ("Step Through")](https://youtu.be/---HbbANxDQ)
+7. Shorts - [Debugging ("Step Into")](https://youtu.be/tk3cl8hyfqM)
+8. Shorts - [Arrays](https://youtu.be/K1yC1xshF40)
+9. Shorts - [Command Line Arguments](https://youtu.be/AI6Ccfno6Pk)
 10. [Practice Problems 2](https://cs50.harvard.edu/x/2023/problems/2/)
 11. [Lab 2](https://cs50.harvard.edu/x/2023/labs/2/)
 3. [Problem Set 2](https://cs50.harvard.edu/x/2023/psets/2/)
@@ -1826,6 +1828,17 @@ int main(void)
         - [uppercase](./Week%202/Lecture%202/uppercase.c)
         - [greet](./Week%202/Lecture%202/greet.c)
         - [status](./Week%202/Lecture%202/status.c)
+- [C code snippets made during the section](./Week%202/Section%202/)
+    - 14/12/2023
+        - [hours](./Week%202/Section%202/hours.c)
+        - [powersoftwo](./Week%202/Section%202/powersoftwo.c)
+        - [string](./Week%202/Section%202/string.c)
+        - [alphabetical](./Week%202/Section%202/alphabetical.c)
+        - [cla](./Week%202/Section%202/cla.c)
+        - [initials](./Week%202/Section%202/initials.c)
+- [C code snippets made during the shorts](./Week%202/Shorts/)
+    - 14/12/2023
+        - [functions](./Week%202/Shorts/functions.c)
 
 ## 3.1. Lecture 2
 
