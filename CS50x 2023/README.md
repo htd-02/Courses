@@ -12,7 +12,7 @@ Requires to use [Scratch](https://scratch.mit.edu/), available as an online edit
 	- Read the 22/11/2023
 3. [Problem Set 0](https://cs50.harvard.edu/x/2023/psets/0/)
     - Started the 23/11/2023
-    - [Caverns of Flesh](https://scratch.mit.edu/projects/929628306/)
+    - Finished the 27/11/2023
 
 ---
 
@@ -28,12 +28,13 @@ Requires to use [Scratch](https://scratch.mit.edu/), available as an online edit
         - [Sprite Movement Chapter](https://cs50.harvard.edu/x/2023/notes/0/#sprite-movement)
         - [More Sprites Chapter](https://cs50.harvard.edu/x/2023/notes/0/#more-sprites)
         - [Assets Used](https://cdn.cs50.net/2022/fall/lectures/0/src0.zip)
-
----
-
-- [Side Scratch projects made during this week](<Week 0/Side Projects/>)
-    - 24/11/2023 - [The Collapse of the Stars](https://scratch.mit.edu/projects/929660054/)
-        - A simple animation with text and music from [Tales of a Cosmic Song](https://github.com/Tales-of-a-Cosmic-Song/)
+- [Scratch project made during the problem set](<Week 0/Problem Set 0/>)
+    - 23/11/2023 to 27/11/2023
+        - [Caverns of Flesh](https://scratch.mit.edu/projects/929628306/) (or [file here](./Week%200/Problem%20Set%200/Caverns%20of%20Flesh%20-%20CS50.sb3) in repository)
+- [Side Scratch project made during the week](<Week 0/Side Projects/>)
+    - 24/11/2023
+        - [The Collapse of the Stars](https://scratch.mit.edu/projects/929660054/) (or [file here](./Week%200/Side%20Projects/The%20Collapse%20of%20the%20Stars.sb3) in repository)  
+        A simple animation with text and music from [Tales of a Cosmic Song](https://github.com/Tales-of-a-Cosmic-Song/)
 
 ## 1.1. Lecture 0
 
@@ -1810,13 +1811,21 @@ int main(void)
 4. Shorts - [Functions](https://youtu.be/n1glFqt3g38)
     - Watched the 14/12/2023
 5. Shorts - [Variables & Scope](https://youtu.be/GiFbdVGjF9I)
+    - Watched the 15/12/2023
 6. Shorts - [Debugging ("Step Through")](https://youtu.be/---HbbANxDQ)
+    - Watched the 15/12/2023
 7. Shorts - [Debugging ("Step Into")](https://youtu.be/tk3cl8hyfqM)
+    - Watched the 15/12/2023
 8. Shorts - [Arrays](https://youtu.be/K1yC1xshF40)
+    - Watched the 15/12/2023
 9. Shorts - [Command Line Arguments](https://youtu.be/AI6Ccfno6Pk)
+    - Watched the 15/12/2023
 10. [Practice Problems 2](https://cs50.harvard.edu/x/2023/problems/2/)
+    - Done the 15/12/2023
 11. [Lab 2](https://cs50.harvard.edu/x/2023/labs/2/)
+    - Done the 15/12/2023
 3. [Problem Set 2](https://cs50.harvard.edu/x/2023/psets/2/)
+    - Started the 15/12/2023
 
 ---
 
@@ -1839,6 +1848,17 @@ int main(void)
 - [C code snippets made during the shorts](./Week%202/Shorts/)
     - 14/12/2023
         - [functions](./Week%202/Shorts/functions.c)
+- [C code snippets made during the practice problems](./Week%202/Practice%20Problems%202/)
+    - 15/12/2023
+        - [hours](./Week%202/Practice%20Problems%202/hours/hours.c)
+        - [no-vowels](./Week%202/Practice%20Problems%202/no-vowels/no-vowels.c)
+        - [password](./Week%202/Practice%20Problems%202/password/password.c)
+- [C code snippets made during the lab](./Week%202/Lab%202/)
+    - 15/12/2023
+        - [scrabble](./Week%202/Lab%202/scrabble/scrabble.c)
+- [C code snippets made during the problem set](./Week%202/Problem%20Set%202/)
+    - 15/12/2023
+        - [readability](./Week%202//Problem%20Set%202/readability/readability.c)
 
 ## 3.1. Lecture 2
 
