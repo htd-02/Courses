@@ -1826,6 +1826,7 @@ int main(void)
     - Done the 15/12/2023
 3. [Problem Set 2](https://cs50.harvard.edu/x/2023/psets/2/)
     - Started the 15/12/2023
+    - Done the 16/12/2023
 
 ---
 
@@ -1859,6 +1860,8 @@ int main(void)
 - [C code snippets made during the problem set](./Week%202/Problem%20Set%202/)
     - 15/12/2023
         - [readability](./Week%202//Problem%20Set%202/readability/readability.c)
+    - 16/12/2023
+        - [wordle](./Week%202/Problem%20Set%202/wordle/wordle.c)
 
 ## 3.1. Lecture 2
 
