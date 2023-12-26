@@ -2286,3 +2286,30 @@ int main(int argc, string argv[])
 - `plaintext` and a `key` are provided to a `cipher` which will result in a ciphered text.
 
 - The key is a special argument passed to the cipher along with the plaintext, the cipher uses the key to make decisions about how to implement it's cipher algorithm.
+
+# 4. 26/12/2023 - [Week 3 - Algorithms](https://cs50.harvard.edu/x/2023/weeks/3/)
+
+1. [Video](https://youtu.be/4oqjcKenCH8)
+	- Watched the 26/12/2023
+2. [Notes](https://cs50.harvard.edu/x/2023/notes/3/) & [Slides](https://cdn.cs50.net/2022/fall/lectures/3/lecture3.pdf)
+3. [Section](https://youtu.be/djmUUa6srSY)
+4. Shorts - [Linear Search](https://youtu.be/TwsgCHYmbbA)
+5. Shorts - [Binary Search](https://youtu.be/T98PIp4omUA)
+6. Shorts - [Bubble Sort](https://youtu.be/RT-hUXUWQ2I)
+7. Shorts - [Selection Sort](https://youtu.be/3hH8kTHFw2A)
+8. Shorts - [Recursion](https://youtu.be/mz6tAJMVmfM)
+9. Shorts - [Merge Sort](https://youtu.be/Ns7tGNbtvV4)
+10. [Practice Problems 3](https://cs50.harvard.edu/x/2023/problems/3/)
+11. [Lab 3](https://cs50.harvard.edu/x/2023/labs/3/)
+3. [Problem Set 3](https://cs50.harvard.edu/x/2023/psets/3/)
+
+---
+
+- [C code snippets made during the lecture](./Week%203/Lecture%203/)
+    - 26/12/2023
+        - [search](./Week%203/Lecture%203/search.c)
+        - [phonebook](./Week%203/Lecture%203/phonebook.c)
+        - [iteration](./Week%203/Lecture%203/iteration.c)
+        - [recursion](./Week%203/Lecture%203/recursion.c)
+
+## 4.1. Lecture 3
