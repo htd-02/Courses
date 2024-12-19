@@ -28,7 +28,7 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License along with this program.
 
-## [CC-BY-SA-4.0](LICENSE.CC-BY-SA-4.0)
+## [CC-BY-SA-4.0](LICENSE.CC-BY-4.0)
 
 You are free to:
 
